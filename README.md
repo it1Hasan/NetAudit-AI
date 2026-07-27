@@ -94,21 +94,17 @@ Respond with ONLY valid JSON matching a fixed schema — no markdown, no preambl
 ## 📸 Screenshots
 
 ### Home Page — Configuration Input & Sample Selectors
-![Home Page]
 <img width="959" height="476" alt="Home Page" src="https://github.com/user-attachments/assets/a0e8935c-9d0f-4414-aaaf-9bdc5be6d67e" />
 
 ### Audit Results — Severity-Coded Findings & CLI Commands
-![Audit Results]
 <img width="959" height="512" alt="Cisco Audit Report" src="https://github.com/user-attachments/assets/5cd17c30-83c7-4235-998d-f8d8c8fa54f0" />
 <img width="959" height="474" alt="Cisco Audit Report 2" src="https://github.com/user-attachments/assets/0e3ed7ff-a5c3-4d54-b690-55209824d364" />
 
 ### History & Analytics — Risk Posture & Export Options
-![Audit History]
 <img width="959" height="509" alt="Audit History" src="https://github.com/user-attachments/assets/1194ca50-e31b-4f2a-8c29-b2779b3c71ae" />
 
 
 ### Firebase Firestore — Database
-![Audit Records]
 <img width="959" height="508" alt="Firebase Saved Audits" src="https://github.com/user-attachments/assets/7701f585-8481-4f56-8f9e-499b03b5a0be" />
 
 
