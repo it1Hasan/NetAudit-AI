@@ -73,3 +73,66 @@ Your job:
 6. Write a 1–2 sentence plain-English summary of the security posture.
 
 Respond with ONLY valid JSON matching a fixed schema — no markdown, no preamble.
+
+
+🚀 Local Development Setup
+Follow these steps to run the project locally on your machine:
+
+1. Clone the Repository
+Bash
+git clone [https://github.com/it1Hasan/NetAudit-AI.git](https://github.com/it1Hasan/NetAudit-AI.git)
+cd NetAudit-AI
+2. Install Dependencies
+Bash
+npm install
+3. Environment Configuration
+Create a .env.local file in the root directory:
+
+Bash
+cp .env.local.example .env.local
+Fill in your respective API keys and Firebase credentials in .env.local:
+
+Code snippet
+# Google Gemini API Key
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# Firebase Configuration
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+4. Run the Development Server
+Bash
+npm run dev
+Open http://localhost:3000 in your browser to view the application.
+
+🔥 Firebase Setup Instructions
+If setting up your own Firebase instance:
+
+Go to the Firebase Console and create a new project.
+
+Navigate to Firestore Database and enable it in test/production mode.
+
+Navigate to Authentication -> Sign-in method and enable Anonymous authentication.
+
+Register a Web Application under Project Settings and copy the configuration keys into your .env.local.
+
+Deploy or add the security rules to the Firestore -> Rules tab:
+
+Plaintext
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /audits/{auditId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+👤 Author
+Built by Hasan Mukhtar
+
+BSIT — Mirpur University of Science and Technology (MUST)
+
+Developed for the Act AI Final Assessment Project.
