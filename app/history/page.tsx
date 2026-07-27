@@ -26,11 +26,9 @@ export default function HistoryPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // 1. Listen for auth state to resolve the race condition
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         try {
-          // 2. Query only by userId to avoid Firebase Composite Index requirements
           const q = query(
             collection(db, "audits"),
             where("userId", "==", user.uid)
@@ -50,7 +48,6 @@ export default function HistoryPage() {
             } as AuditRecord;
           });
 
-          // 3. Sort client-side (newest first)
           data.sort((a, b) => b.createdAt - a.createdAt);
           
           setRecords(data);
@@ -79,7 +76,6 @@ export default function HistoryPage() {
     }
   };
 
-  // Calculate Average Risk Score for the Dashboard Metric
   const averageScore = records.length > 0 
     ? Math.round(records.reduce((acc, curr) => acc + curr.overallScore, 0) / records.length) 
     : 0;

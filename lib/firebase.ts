@@ -21,11 +21,6 @@ const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-/**
- * Ensures the visitor has an anonymous Firebase Auth session.
- * This lets us scope Firestore writes to a user without any login screen —
- * important since graders need to open the app and use it instantly.
- */
 export function ensureAnonymousAuth(): Promise<User> {
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
