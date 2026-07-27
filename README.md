@@ -46,6 +46,7 @@ This tool was inspired by real-world network administration workflows (drawing f
 ## 🧠 The AI Architecture
 
 ### How It Works
+
 The core engine of NetAudit AI utilizes a structured system prompt that instructs the AI model to act as a **Senior Network Security Auditor**. It parses raw configuration text, detects the target platform, evaluates security posture line-by-line, and outputs structured JSON data. This JSON output dynamically powers the entire frontend dashboard—including severity rings, vulnerability cards, and CLI fix snippets.
 
 * **Model Used:** Google Gemini API (`gemini-3.6-flash`)
@@ -73,3 +74,123 @@ Your job:
 6. Write a 1–2 sentence plain-English summary of the security posture.
 
 Respond with ONLY valid JSON matching a fixed schema — no markdown, no preamble.
+```
+
+---
+
+## 🛠️ Tech Stack & Services
+
+| Category | Technology / Service |
+|---|---|
+| Frontend Framework | Next.js (App Router, React, TypeScript) |
+| Styling | Tailwind CSS |
+| Database | Firebase Firestore |
+| Authentication | Firebase Authentication (Anonymous Auth) |
+| AI Integration | Google Gemini API (`@google/genai`) |
+| Deployment | Vercel |
+
+---
+
+## 📸 Screenshots
+
+> Drag and drop your image files directly into this section in the GitHub README editor, or upload them to a `/screenshots` folder in the repo and reference them with `![alt text](./screenshots/filename.png)`.
+
+### Home Page — Configuration Input & Sample Selectors
+![Home Page]
+<img width="959" height="476" alt="Home Page" src="https://github.com/user-attachments/assets/a0e8935c-9d0f-4414-aaaf-9bdc5be6d67e" />
+
+### Audit Results — Severity-Coded Findings & CLI Commands
+![Audit Results]
+<img width="959" height="512" alt="Cisco Audit Report" src="https://github.com/user-attachments/assets/5cd17c30-83c7-4235-998d-f8d8c8fa54f0" />
+<img width="959" height="474" alt="Cisco Audit Report 2" src="https://github.com/user-attachments/assets/0e3ed7ff-a5c3-4d54-b690-55209824d364" />
+
+### History & Analytics — Risk Posture & Export Options
+![Audit History]
+<img width="959" height="509" alt="Audit History" src="https://github.com/user-attachments/assets/1194ca50-e31b-4f2a-8c29-b2779b3c71ae" />
+
+
+### Firebase Firestore — Database
+![Audit Records]
+<img width="959" height="508" alt="Firebase Saved Audits" src="https://github.com/user-attachments/assets/7701f585-8481-4f56-8f9e-499b03b5a0be" />
+
+
+---
+
+## 🚀 Local Development Setup
+
+Follow these steps to run the project locally on your machine:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/it1Hasan/NetAudit-AI.git
+cd NetAudit-AI
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Environment Configuration
+
+Create a `.env.local` file in the root directory:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Fill in your respective API keys and Firebase credentials in `.env.local`:
+
+```
+# Google Gemini API Key
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# Firebase Configuration
+NEXT_PUBLIC_FIREBASE_API_KEY=your_firebase_api_key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
+```
+
+### 4. Run the Development Server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+---
+
+## 🔥 Firebase Setup Instructions
+
+If setting up your own Firebase instance:
+
+1. Go to the [Firebase Console](https://console.firebase.google.com) and create a new project.
+2. Navigate to **Firestore Database** and enable it.
+3. Navigate to **Authentication → Sign-in method** and enable **Anonymous** authentication.
+4. Register a **Web Application** under Project Settings and copy the configuration keys into your `.env.local`.
+5. Deploy or add the security rules to the **Firestore → Rules** tab:
+
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /audits/{auditId} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+```
+
+---
+
+## 👤 Author
+
+**Built by Hasan Mukhtar**
+BSIT — Mirpur University of Science and Technology (MUST)
+Developed for the *Act AI* Final Assessment Project.
