@@ -93,8 +93,6 @@ Respond with ONLY valid JSON matching a fixed schema — no markdown, no preambl
 
 ## 📸 Screenshots
 
-> Drag and drop your image files directly into this section in the GitHub README editor, or upload them to a `/screenshots` folder in the repo and reference them with `![alt text](./screenshots/filename.png)`.
-
 ### Home Page — Configuration Input & Sample Selectors
 ![Home Page]
 <img width="959" height="476" alt="Home Page" src="https://github.com/user-attachments/assets/a0e8935c-9d0f-4414-aaaf-9bdc5be6d67e" />
